@@ -1,5 +1,6 @@
 package cl.magnet.mobileappsexample;
 
+import android.app.Fragment;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import cl.magnet.mobileappsexample.db.Form;
+import cl.magnet.mobileappsexample.db.FormFragment;
 import cl.magnet.mobileappsexample.db.FormViewModel;
 import cl.magnet.mobileappsexample.network.NetworkManager;
 
@@ -101,9 +103,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        android.support.v4.app.Fragment fragment = null;
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.formfragment) {
+            fragment = new FormFragment();
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
@@ -119,6 +123,8 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.list, fragment).commit();
         return true;
     }
 

@@ -8,18 +8,22 @@ import android.arch.persistence.room.Query;
 
 import java.util.List;
 
-@Dao
-public interface FormDao {
+/**
+ * Created by MariaJose on 29-05-2018.
+ */
 
-    @Query("SELECT * FROM form")
-    LiveData<List<Form>> getAllForms();
+@Dao
+public interface QuestionDao {
+
+    @Query("SELECT * FROM question")
+    LiveData<List<Question>> getAllQuetions();
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insertAll(Form[] forms);
+    void insertAll(Question... questions);
 
-    @Query("DELETE FROM form")
+    @Query("DELETE FROM question")
     void deleteAll();
 
     @Insert
-    void insertOnlySingleForm(Form form);
+    void insertOnlySingleQuestion(Question question);
 }

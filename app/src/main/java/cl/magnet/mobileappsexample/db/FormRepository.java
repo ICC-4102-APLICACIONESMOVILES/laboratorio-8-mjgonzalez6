@@ -13,7 +13,7 @@ public class FormRepository {
 
     FormRepository(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
-        mFormDao = db.formDao();
+        mFormDao = db.FormDao();
         mAllForms = mFormDao.getAllForms();
     }
 
